@@ -1,5 +1,7 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include "main.h"
 /**
 * find_correct_func - finding the format for _printf
 * @format: format
@@ -15,13 +17,13 @@ code_f find_f[] = {
 {"d", print_dec},
 {"r", print_rev},
 {"b", print_bin},
-{"u", print_unsig},
+{"u", print_unsigned},
 {"o", print_octal},
-{"x", print_x},
-{"X", print_X},
+{"x", print_hex},
+{"X", print_HEX},
 {"R", print_rot13},
-{"S", print_X},
-{"p", print_X},
+{"S", print_S},
+{"p", print_p},
 {NULL, NULL}
 };
 while (find_f[i].sc)
@@ -74,6 +76,4 @@ i++;
 va_end(list);
 return (len);
 }
-/**
- * making changes for the team projects */
 

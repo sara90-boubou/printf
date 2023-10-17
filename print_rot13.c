@@ -1,30 +1,41 @@
 #include "main.h"
-#include <stdio.h>
 /**
-* print_rot13 - encodes a string into rot13.
-* @R: string to convert
-* Return: size the output text
+* rot13 - main function
+* @y: The argument pointer.
+*
+* Description: This function prints the rot13'ed string.
+*
+* Return: The total number of characters.
 */
 int print_rot13(va_list R)
 {
-int j, i, count = 0;
-char *r;
-char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz";
-char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLM nopqrstuvwxyzabcdefghijklm";
-r = va_arg(R, char *);
-if (r == NULL)
-r = "(null)";
-for (j = 0; r[j] != '\0'; j++)
+char alph[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+int j, i = 0, count = 0, pl = 0;
+char *s = va_arg(R, char*);
+if (s == NULL)
 {
-for (i = 0; input[i] != '\0'; i++)
+s = "(null)";
+}
+while (s[i] != '\0')
 {
-if (r[j] == input[i])
+pl = 0;
+for (j = 0; alph[j] != '\0' && !pl; j++)
 {
-_putchar(output[i]);
-	count++;
-	break;
+if (s[i] == alph[j])
+{
+_putchar(rot13[j]);
+count++;
+pl = 1;
 }
 }
+if (!pl)
+{
+_putchar(s[i]);
+count++;
+}
+i++;
 }
 return (count);
 }
+

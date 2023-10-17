@@ -3,22 +3,17 @@
 #include <stdarg.h>
 #include "main.h"
 /**
-* print_dec - prints decimal
-* @d: decimal to be printed
+* print_unsigned - prints unsigned
+* @d: unsigned to be printed
 * Return: size
 */
-int print_dec(va_list d)
+int print_unsigned(va_list u)
 {
-int len, pow, j, digit, n, count, num;
-count = 0;
-n = va_arg(d, int);
+unsigned int len, pow, j, digit, n, num;
+int count = 0;
+n = va_arg(u, unsigned int);
 if (n != 0)
 {
-if (n < 0)
-{
-_putchar('-');
-count++;
-}
 num = n;
 len = 0;
 while (num != 0)
@@ -32,9 +27,6 @@ pow *= 10;
 for (j = 1; j <= len; j++)
 {
 digit = n / pow;
-if (n < 0)
-_putchar((digit * -1) + 48);
-else
 _putchar(digit + '0');
 count++;
 n -= (digit * pow);

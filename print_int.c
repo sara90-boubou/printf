@@ -1,13 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 #include "main.h"
 /**
-* print_int - function that prints an integer
-* @i: integer to print
-* Descriptions: prints digit with _putchar
-* Return: size the output text
+* print_int - prints integer
+* @i: integer to be printed
+* Return: size
 */
 int print_int(va_list i)
 {
-int len, powten, j, digit, n, count = 0, num;
+int len, pow, j, digit, n, count, num;
+count = 0;
 n = va_arg(i, int);
 if (n != 0)
 {
@@ -23,19 +26,19 @@ while (num != 0)
 num /= 10;
 len++;
 }
-powten = 1;
+pow = 1;
 for (j = 1; j <= len - 1; j++)
-powten *= 10;
+pow *= 10;
 for (j = 1; j <= len; j++)
 {
-digit = n / powten;
+digit = n / pow;
 if (n < 0)
 _putchar((digit * -1) + 48);
 else
 _putchar(digit + '0');
 count++;
-n -= digit *powten;
-powten /= 10;
+n -= (digit * pow);
+pow /= 10;
 }
 }
 else
@@ -45,3 +48,4 @@ return (1);
 }
 return (count);
 }
+
